@@ -1,0 +1,37 @@
+"Name1","Name2","Freq"
+"Anna","Bulda",4
+"Anna","Duke",14
+"Anna","Elsa",111
+"Anna","Gerda",3
+"Anna","Grand Pabbie",3
+"Anna","Hans",82
+"Anna","Kai",11
+"Anna","King",1
+"Anna","Kristoff",199
+"Anna","Marshmallow",5
+"Anna","Oaken",6
+"Anna","Olaf",82
+"Anna","Queen",1
+"Bulda","Kristoff",2
+"Duke","Elsa",5
+"Duke","Hans",15
+"Duke","Kai",3
+"Elsa","Grand Pabbie",2
+"Elsa","Hans",17
+"Elsa","Kai",1
+"Elsa","King",9
+"Elsa","Olaf",7
+"Elsa","Queen",2
+"Gerda","Hans",2
+"Gerda","Kristoff",2
+"Grand Pabbie","King",6
+"Grand Pabbie","Kristoff",5
+"Grand Pabbie","Queen",2
+"Hans","Kai",1
+"Hans","Marshmallow",1
+"Kai","Kristoff",3
+"King","Queen",2
+"Kristoff","Marshmallow",2
+"Kristoff","Oaken",13
+"Kristoff","Olaf",34
+"Marshmallow","Olaf",3

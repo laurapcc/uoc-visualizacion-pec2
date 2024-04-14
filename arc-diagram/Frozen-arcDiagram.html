@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+</style>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<script src="//cdn.amcharts.com/lib/5/index.js"></script>
+<script src="//cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="//cdn.amcharts.com/lib/5/flow.js"></script>
+<script src="//cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<div id="chartdiv"></div>
+
+<script>
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://www.amcharts.com/docs/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+var root = am5.Root.new("chartdiv");
+
+
+// Set themes
+// https://www.amcharts.com/docs/v5/concepts/themes/
+root.setThemes([
+  am5themes_Animated.new(root)
+]);
+
+
+// Create series
+// https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/
+var series = root.container.children.push(am5flow.ArcDiagram.new(root, {
+  sourceIdField: "from",
+  targetIdField: "to",
+  valueField: "value",
+  orientation: "horizontal"
+}));
+
+
+// Configure labels
+// https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/#Labels
+series.nodes.labels.template.setAll({
+  fontSize: "0.85em",
+  paddingLeft: 20,
+  paddingRight: 20
+});
+
+
+var series = root.container.children.push(
+  am5flow.ArcDiagram.new(root, {
+    sourceIdField: "from",
+    targetIdField: "to",
+    valueField: "value",
+    radiusKey: "none"
+  })
+);
+
+
+// Selectively position/rotate labels if they fit within node circle
+series.nodes.labels.template.adapters.add("x", function (x, target) {
+  var dataItem = target.dataItem;
+  if (dataItem) {
+    if (dataItem.get("circle").get("radius") > 30) {
+      target.set("centerX", am5.p50);
+      target.set("rotation", 0);
+    }
+    else {
+      target.set("centerX", 0);
+      target.set("rotation", 90);
+    }
+  }
+  return x;
+});
+
+
+// Set data
+// https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
+series.data.setAll([{'from': 'Anna', 'to': 'Bulda', 'value': 4}, {'from': 'Anna', 'to': 'Duke', 'value': 14}, {'from': 'Anna', 'to': 'Elsa', 'value': 111}, {'from': 'Anna', 'to': 'Gerda', 'value': 3}, {'from': 'Anna', 'to': 'Grand Pabbie', 'value': 3}, {'from': 'Anna', 'to': 'Hans', 'value': 82}, {'from': 'Anna', 'to': 'Kai', 'value': 11}, {'from': 'Anna', 'to': 'King', 'value': 1}, {'from': 'Anna', 'to': 'Kristoff', 'value': 199}, {'from': 'Anna', 'to': 'Marshmallow', 'value': 5}, {'from': 'Anna', 'to': 'Oaken', 'value': 6}, {'from': 'Anna', 'to': 'Olaf', 'value': 82}, {'from': 'Anna', 'to': 'Queen', 'value': 1}, {'from': 'Bulda', 'to': 'Kristoff', 'value': 2}, {'from': 'Duke', 'to': 'Elsa', 'value': 5}, {'from': 'Duke', 'to': 'Hans', 'value': 15}, {'from': 'Duke', 'to': 'Kai', 'value': 3}, {'from': 'Elsa', 'to': 'Grand Pabbie', 'value': 2}, {'from': 'Elsa', 'to': 'Hans', 'value': 17}, {'from': 'Elsa', 'to': 'Kai', 'value': 1}, {'from': 'Elsa', 'to': 'King', 'value': 9}, {'from': 'Elsa', 'to': 'Olaf', 'value': 7}, {'from': 'Elsa', 'to': 'Queen', 'value': 2}, {'from': 'Gerda', 'to': 'Hans', 'value': 2}, {'from': 'Gerda', 'to': 'Kristoff', 'value': 2}, {'from': 'Grand Pabbie', 'to': 'King', 'value': 6}, {'from': 'Grand Pabbie', 'to': 'Kristoff', 'value': 5}, {'from': 'Grand Pabbie', 'to': 'Queen', 'value': 2}, {'from': 'Hans', 'to': 'Kai', 'value': 1}, {'from': 'Hans', 'to': 'Marshmallow', 'value': 1}, {'from': 'Kai', 'to': 'Kristoff', 'value': 3}, {'from': 'King', 'to': 'Queen', 'value': 2}, {'from': 'Kristoff', 'to': 'Marshmallow', 'value': 2}, {'from': 'Kristoff', 'to': 'Oaken', 'value': 13}, {'from': 'Kristoff', 'to': 'Olaf', 'value': 34}, {'from': 'Marshmallow', 'to': 'Olaf', 'value': 3}]);
+
+
+
+// Make stuff animate on load
+series.appear(1000, 100);
+</script>
+
+</body>
+</html>
